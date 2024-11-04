@@ -8,11 +8,10 @@ library(fgsea)
 library("RColorBrewer")
 library(pheatmap)
 
-setwd('/data/chenxic/project/2022_07_07_PHD2/manuscript_folder/')
 
 ################################################
 # read in data
-df.count = read.csv('count.csv',
+df.count = read.csv('exp_mtx/count.csv',
                     as.is = T,
                     row.names = 1)
 
@@ -65,7 +64,7 @@ DEGList[['day2Vehicle_vs_day2sham']] = f.Deseq_compare(dds, 'day2sham', 'day2Veh
 #########################
 # GSEA
 system('mkdir GSEA_pathway_analysis')
-pathwayDB_kegg = gmtPathways('kegg_mouse_symbol.gmt')
+pathwayDB_kegg = gmtPathways('pathway_db/kegg_mouse_symbol.gmt')
 gseaList_kegg = list()
 
 for(comparison in c('day2ISM012_vs_day2Vehicle', 'day2Vehicle_vs_day2sham')){
